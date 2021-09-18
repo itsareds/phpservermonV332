@@ -20,7 +20,7 @@ services:
    - 3306:3306
 
  phpservermon:
-  image: itsared/phpservermon_standard:1
+  image: itsared/phpservermon_standard:1 #ใน docker hub itsared
   container_name: phpservermon
   hostname: phpservermon
   restart: always
