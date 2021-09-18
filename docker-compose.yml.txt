@@ -1,0 +1,38 @@
+
+version: "3"
+services:
+
+ db:
+  image: mariadb:10
+  container_name: phpservermon-mariadb
+  hostname: mariadb
+  restart: always
+  volumes:
+#   - ./docker/mysql/data:/var/lib/mysql:rw
+   - ./mariadb:/var/lib/mysql
+#   - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+  environment:
+   - MYSQL_ROOT_PASSWORD=password
+   - MYSQL_DATABASE=phpservermon
+   - MYSQL_USER=phpservermon
+   - MYSQL_PASSWORD=password
+  ports:
+   - 3306:3306
+
+ phpservermon:
+  image: itsared/phpservermon_standard:1
+  container_name: phpservermon
+  hostname: phpservermon
+  restart: always
+  environment:
+   - PSM_DB_HOST=db
+   - PSM_DB_NAME=phpservermon
+   - PSM_DB_USER=phpservermon
+   - PSM_DB_PASS=password
+   - PSM_DB_PREFIX=Y8ze_
+   - PHP_TIMEZONE=Asia/Bangkok
+   - UPDATE_INTERVAL=600
+  depends_on:
+   - db
+  ports:
+   - 8080:80
