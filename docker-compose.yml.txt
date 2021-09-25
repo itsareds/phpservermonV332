@@ -29,7 +29,7 @@ services:
    - PSM_DB_NAME=phpservermon
    - PSM_DB_USER=phpservermon
    - PSM_DB_PASS=password
-   - PSM_DB_PREFIX=Y8ze_
+   - PSM_DB_PREFIX=psm_
    - PHP_TIMEZONE=Asia/Bangkok
    - UPDATE_INTERVAL=600
   depends_on:
